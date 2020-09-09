@@ -11,5 +11,6 @@
 <body>
 
 <p> page jsp</p>
+<p>model: ${test}</p>
 </body>
 </html>
