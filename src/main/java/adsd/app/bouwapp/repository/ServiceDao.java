@@ -1,34 +1,40 @@
 package adsd.app.bouwapp.repository;
 
 import adsd.app.bouwapp.model.Grondstof;
+import adsd.app.bouwapp.model.Test;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ServiceDao {
+public class ServiceDao implements  DaoInterface {
 
-    // autowiring jdbc template , jdbc properties are configured in application properties
-    // spring autpmatically detetcts and creates  jdbc template object using configuration
+
+    private EntityManager entityManager;
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    //returns list of materials
-
-    public List<String> getGrondstoffen  ()
+    public ServiceDao (EntityManager theEntityManager)
     {
-        System.out.println("service dao");
-        List<String> grondstoffenLijst =new ArrayList<>();
-
-        grondstoffenLijst.addAll( jdbcTemplate.queryForList("select tutorial_title from test", String.class));
-        //jdbcTemplate.queryForList("select tutorial_title form test", String.class);
-        System.out.println("lijst:"+grondstoffenLijst);
-        return grondstoffenLijst;
+        entityManager=theEntityManager;
     }
+    //returns list of materials
+    @Override
+    @Transactional
+    public List<Test> findAllGrondstoffen() {
 
+        Session currentSession=entityManager.unwrap(Session.class);
 
+        Query<Test> query=currentSession.createQuery("from Test", Test.class);
+
+        List<Test> lijst=query.getResultList();
+
+        return lijst;
+    }
 }

@@ -1,6 +1,7 @@
 package adsd.app.bouwapp.controller;
 
 import adsd.app.bouwapp.model.Grondstof;
+import adsd.app.bouwapp.model.Test;
 import adsd.app.bouwapp.repository.ServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +32,10 @@ public class RestUserController {
     }
 
 
-    @GetMapping("/getList")
-    public List<String> getAllMaterials()
+    @GetMapping("/getAll")
+    public List<Test> getAllMaterials()
     {
-        return serviceDao.getGrondstoffen();
+        return serviceDao.findAllGrondstoffen();
 
     }
 
