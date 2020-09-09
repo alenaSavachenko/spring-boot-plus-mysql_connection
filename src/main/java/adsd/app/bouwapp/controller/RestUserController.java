@@ -4,6 +4,7 @@ import adsd.app.bouwapp.model.Grondstof;
 import adsd.app.bouwapp.model.Test;
 import adsd.app.bouwapp.repository.ServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 //rest controller
 
-
+@RequestMapping("/api")
 @RestController
 public class RestUserController {
 
@@ -26,8 +27,11 @@ public class RestUserController {
     }
 
     @GetMapping("/test")
-    public String test()
+    public String test(Model model)
     {
+
+        model.addAttribute("lijst",serviceDao.findAllGrondstoffen() );
+
         return "test";
     }
 
@@ -39,12 +43,6 @@ public class RestUserController {
 
     }
 
-/*    @RequestMapping("/users")
-
-    public List<Grondstof> getUsers()
-    {
-     return new ArrayList<>();
-    }*/
 
 }
 
