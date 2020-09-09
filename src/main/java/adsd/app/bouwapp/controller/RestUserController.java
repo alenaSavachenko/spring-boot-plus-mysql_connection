@@ -26,14 +26,6 @@ public class RestUserController {
         return "welcome";
     }
 
-    @GetMapping("/test")
-    public String test(Model model)
-    {
-
-        model.addAttribute("lijst",serviceDao.findAllGrondstoffen() );
-
-        return "test";
-    }
 
 
     @GetMapping("/getAll")

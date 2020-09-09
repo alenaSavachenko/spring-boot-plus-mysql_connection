@@ -1,3 +1,7 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,5 +13,7 @@
 </head>
 <body>
 <p>jsp</p>
+<p> -- -></p>
+<p>${test}</p>
 </body>
 </html>
