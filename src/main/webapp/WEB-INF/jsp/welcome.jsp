@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -12,5 +14,26 @@
 
 <p> page jsp</p>
 <p>model: ${test}</p>
+
+<p>${lijst}</p>
+
+<table border="1">
+    <tr>
+        <th>EMP ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+    </tr>
+    <c:forEach var="item" items="${lijst}">
+        <tr>
+            <td>${item.id}</td>
+            <td>${item.tutorial_title}</td>
+            <td align="center">${test}</td>
+            <td align="center">${test}</td>
+        </tr>
+    </c:forEach>
+</table>
+
+
 </body>
 </html>

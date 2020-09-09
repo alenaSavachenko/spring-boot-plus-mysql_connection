@@ -1,6 +1,8 @@
 package adsd.app.bouwapp.controller;
 
 
+import adsd.app.bouwapp.repository.ServiceDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WelcomeController {
 
 
+    @Autowired
+    ServiceDao serviceDao;
 
 
     @RequestMapping("/welcome")
@@ -16,6 +20,8 @@ public class WelcomeController {
     public String welcome (Model model)
     {
         model.addAttribute("test","testAttribute");
+        model.addAttribute("lijst",serviceDao.findAllGrondstoffen());
+
         return "welcome";
     }
 

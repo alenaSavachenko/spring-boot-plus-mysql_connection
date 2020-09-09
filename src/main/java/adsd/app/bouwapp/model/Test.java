@@ -33,11 +33,11 @@ public class Test {
         this.id = id;
     }
 
-    public String getTutorial_titile() {
+    public String getTutorial_title() {
         return tutorial_title;
     }
 
-    public void setTutorial_titile(String tutorial_titile) {
+    public void setTutorial_title (String tutorial_titile) {
         this.tutorial_title = tutorial_titile;
     }
 
