@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -27,14 +28,31 @@ public class ServiceDao implements  DaoInterface {
     //returns list of materials
     @Override
     @Transactional
-    public List<Test> findAllGrondstoffen() {
+    public List<Grondstof> findAllGrondstoffen() {
 
         Session currentSession=entityManager.unwrap(Session.class);
 
-        Query<Test> query=currentSession.createQuery("from Test", Test.class);
+        Query<Grondstof> query=currentSession.createQuery("from Grondstof", Grondstof.class);
 
-        List<Test> lijst=query.getResultList();
+        List<Grondstof> lijst=query.getResultList();
 
         return lijst;
     }
+
+
+    public boolean findUser(int id)
+    {
+        Session session=entityManager.unwrap(Session.class);
+        String hql = "FROM Test E WHERE E.id = :user_id";
+        Query query = session.createQuery(hql);
+        query.setParameter("user_id",id);
+        List results = query.list();
+        if (results.size()==0)
+            return false;
+        else {return true;}
+
+    }
+
+
+
 }

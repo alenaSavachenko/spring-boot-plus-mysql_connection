@@ -1,59 +1,74 @@
 package adsd.app.bouwapp.model;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="grondstoffen")
 public class Grondstof {
 
-    private String naam;
-    private boolean beschikbaar;
-    private float percentageAanPrimaireGrondstoffen;
-    private float percentageAanSecundaireGrondstoffen;
-    private int losmaakbaarheid;
-    private String locatie;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    int id;
+    @Column(name="soort")
+    String soort;
+    @Column(name="duurzaamheidsklasse")
+    float duurzaamheidsklasse;
+    @Column(name="dichtheid")
+    int dichtheid;
+    @Column(name="toepassingen")
+    String toepassingen;
 
-    public String getName() {
-        return naam;
+    // contructors
+
+    public Grondstof(){};
+
+    public Grondstof(String soort, float duurzaamheidsklasse, int dichtheid, String toepassingen) {
+        this.soort = soort;
+        this.duurzaamheidsklasse = duurzaamheidsklasse;
+        this.dichtheid = dichtheid;
+        this.toepassingen = toepassingen;
     }
 
-    public void setName(String naam) {
-        this.naam = naam;
+    public int getId() {
+        return id;
     }
 
-    public boolean isBeschikbaar() {
-        return beschikbaar;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setBeschikbaar(boolean beschikbaar) {
-        this.beschikbaar = beschikbaar;
+    public String getSoort() {
+        return soort;
     }
 
-    public float getPercentageAanPrimaireGrondstoffen() {
-        return percentageAanPrimaireGrondstoffen;
+    public void setSoort(String soort) {
+        this.soort = soort;
     }
 
-    public void setPercentageAanPrimaireGrondstoffen(float percentageAanPrimaireGrondstoffen) {
-        this.percentageAanPrimaireGrondstoffen = percentageAanPrimaireGrondstoffen;
+    public float getDuurzaamheidsklasse() {
+        return duurzaamheidsklasse;
     }
 
-    public float getPercentageAanSecundaireGrondstoffen() {
-        return percentageAanSecundaireGrondstoffen;
+    public void setDuurzaamheidsklasse(float duurzaamheidsklasse) {
+        this.duurzaamheidsklasse = duurzaamheidsklasse;
     }
 
-    public void setPercentageAanSecundaireGrondstoffen(float percentageAanSecundaireGrondstoffen) {
-        this.percentageAanSecundaireGrondstoffen = percentageAanSecundaireGrondstoffen;
+    public int getDichtheid() {
+        return dichtheid;
     }
 
-    public int getLosmaakbaarheid() {
-        return losmaakbaarheid;
+    public void setDichtheid(int dichtheid) {
+        this.dichtheid = dichtheid;
     }
 
-    public void setLosmaakbaarheid(int losmaakbaarheid) {
-        this.losmaakbaarheid = losmaakbaarheid;
+    public String getToepassingen() {
+        return toepassingen;
     }
 
-    public String getLocatie() {
-        return locatie;
-    }
-
-    public void setLocatie(String locatie) {
-        this.locatie = locatie;
+    public void setToepassingen(String toepassingen) {
+        this.toepassingen = toepassingen;
     }
 }

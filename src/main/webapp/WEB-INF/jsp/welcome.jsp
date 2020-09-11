@@ -34,6 +34,6 @@
     </c:forEach>
 </table>
 
-
+<font color="red">${errorMessage}</font>
 </body>
 </html>

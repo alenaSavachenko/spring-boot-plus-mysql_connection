@@ -14,6 +14,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/api")
 public class RestUserController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class RestUserController {
     @GetMapping("/")
     public String check()
     {
-        return "welcome";
+        return "index";
     }
 
     @GetMapping("/test")
@@ -32,8 +33,8 @@ public class RestUserController {
     }
 
 
-    @GetMapping("/getAll")
-    public List<Test> getAllMaterials()
+    @GetMapping("/getInfo")
+    public List<Grondstof> getAllMaterials()
     {
         return serviceDao.findAllGrondstoffen();
 

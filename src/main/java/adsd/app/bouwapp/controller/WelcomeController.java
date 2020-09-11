@@ -25,4 +25,20 @@ public class WelcomeController {
         return "welcome";
     }
 
+
+    @RequestMapping("/login")
+
+    public String login (Model model)
+    {
+
+       if(serviceDao.findUser(9)==false ) {
+           model.addAttribute("errorMessage", "wrong user name or password");
+           return "welcome";
+       }
+
+        else
+        {return "welcome";}
+    }
+
+
 }

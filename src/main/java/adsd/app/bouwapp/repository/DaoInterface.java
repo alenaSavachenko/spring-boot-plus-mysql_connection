@@ -13,6 +13,6 @@ import java.util.List;
 
 public interface DaoInterface  {
 
-    List<Test> findAllGrondstoffen ();
+    List<Grondstof> findAllGrondstoffen ();
 
 }
